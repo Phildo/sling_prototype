@@ -75,7 +75,7 @@ var GamePlayScene = function(game, stage)
         )
         self.vy = -self.vy;
 
-        if(self.t > 1000) return false;
+        if(self.t > 100) return false;
         return true;
       }
 
@@ -117,7 +117,15 @@ var GamePlayScene = function(game, stage)
 
     self.draw = function(canv)
     {
+      canv.context.lineWidth = 2;
       canv.context.fillStyle = "#"+self.r+self.g+self.b;
+      canv.context.strokeStyle = "#"+self.r+self.g+self.b;
+
+      canv.context.beginPath();
+      canv.context.moveTo(self.hx,self.hy);
+      canv.context.lineTo(self.ax+(self.aw/2),self.ay+(self.ah/2));
+      canv.context.stroke();
+
       canv.context.fillRect(self.ax,self.ay,self.aw,self.ah);
     }
   }
